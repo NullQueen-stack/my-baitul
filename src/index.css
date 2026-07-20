@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body text-ink bg-white antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display;
+}
+
+/* ---------- Signature motif: blueprint grid ---------- */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(79, 176, 232, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 176, 232, 0.14) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-grid-fine {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.node-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #cda43e;
+  box-shadow: 0 0 12px 3px rgba(205, 164, 62, 0.65);
+}
+
+/* ---------- Glass panel utility ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(10, 21, 48, 0.06);
+}
+
+/* ---------- Chamfered corner (engineering drafting cue) ---------- */
+.chamfer {
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
+}
+
+/* ---------- Section eyebrow line ---------- */
+.eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-skyline-500;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, #cda43e, #4fb0e8);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f2f4f8; }
+::-webkit-scrollbar-thumb { background: #7b90ba; border-radius: 999px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #4fb0e8;
+  outline-offset: 2px;
+}
+
+.container-x {
+  @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10;
+}
